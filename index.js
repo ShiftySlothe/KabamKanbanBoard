@@ -6,6 +6,7 @@ const passport = require("passport");
 const keys = require("./config/keys");
 
 console.log("Google client ID: " + keys.googleClientID);
+console.log("Encryption: " + keys.cookieKey);
 //Run scripts
 require("./models/user");
 require("./services/passport");
