@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import { ColumnContainer, ColumnTitle } from "../../styles"
+import { ColumnContainer, ColumnTitle } from "./taskBoardStyles"
 import { useAppState } from "../../state/AppStateContext"
 import { Card } from "./Card"
 import { AddNewItem } from "./AddNewItem"

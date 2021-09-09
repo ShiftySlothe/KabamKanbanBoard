@@ -5,12 +5,13 @@ import { TaskBoard } from "./components/Taskboard/TaskBoard"
 import { DndProvider } from "react-dnd"
 import { HTML5Backend as Backend } from "react-dnd-html5-backend"
 import { AppStateProvider } from "./state/AppStateContext"
+import { App } from "./components/App";
 
 ReactDOM.render(
   <React.StrictMode>
     <DndProvider backend={Backend}>
       <AppStateProvider>
-        <TaskBoard />
+        <App />
       </AppStateProvider>
     </DndProvider>
   </React.StrictMode>,

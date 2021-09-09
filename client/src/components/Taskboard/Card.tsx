@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { CardContainer } from "../../styles";
+import { CardContainer } from "./taskBoardStyles";
 import { useItemDrag } from "../../utils/useItemDrag";
 import { useDrop } from "react-dnd";
 import { useAppState } from "../../state/AppStateContext";

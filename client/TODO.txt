@@ -1,0 +1,2 @@
+- Consider moving App Context Provider directly down to the Taskboard level.
+- ADD PRETTIER

@@ -3,7 +3,7 @@ import { Column } from "../Column"
 import {
   CustomDragLayerContainer,
   DragPreviewWrapper
-} from "../../../styles"
+} from "../taskBoardStyles"
 import { useAppState } from "../../../state/AppStateContext"
 import { Card } from "../Card"
 

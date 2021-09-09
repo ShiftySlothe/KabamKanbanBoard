@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const AppContainer = styled.div`
+export const TaskBoardContainer = styled.div`
   align-items: flex-start;
   background-color: #3179ba;
   display: flex;

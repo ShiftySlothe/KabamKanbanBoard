@@ -1,5 +1,5 @@
 import { Column } from "./Column"
-import { AppContainer } from "../../styles"
+import { TaskBoardContainer } from "./taskBoardStyles"
 import { useAppState } from "../../state/AppStateContext"
 import { AddNewItem } from "./AddNewItem"
 import { CustomDragLayer } from "./DnD/CustomDragLayer"
@@ -9,7 +9,7 @@ export const TaskBoard = () => {
   const {lists, dispatch} = useAppState()
 
   return (
-    <AppContainer>
+    <TaskBoardContainer>
       <CustomDragLayer />
       {lists.map((list) => (
         <Column id={list.id} text={list.text} key={list.id}/>
@@ -18,6 +18,6 @@ export const TaskBoard = () => {
         toggleButtonText="+ Add another list"
         onAdd={text => dispatch(addList(text))}
       />
-    </AppContainer>
+    </TaskBoardContainer>
   )
 }
