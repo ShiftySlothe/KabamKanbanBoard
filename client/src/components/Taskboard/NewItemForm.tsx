@@ -1,10 +1,10 @@
 import { useState, KeyboardEvent } from "react"
-import { useFocus } from "./utils/useFocus"
+import { useFocus } from "../../utils/useFocus"
 import {
   NewItemFormContainer,
   NewItemButton,
   NewItemInput
-} from "./styles"
+} from "../../styles"
 
 type NewItemFormProps = {
   onAdd(text: string): void

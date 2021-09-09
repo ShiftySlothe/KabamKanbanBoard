@@ -1,11 +1,11 @@
 import { Column } from "./Column"
-import { AppContainer } from "./styles"
-import { useAppState } from "./state/AppStateContext"
+import { AppContainer } from "../../styles"
+import { useAppState } from "../../state/AppStateContext"
 import { AddNewItem } from "./AddNewItem"
-import { CustomDragLayer } from "./CustomDragLayer"
-import { addList } from "./state/actions"
+import { CustomDragLayer } from "./DnD/CustomDragLayer"
+import { addList } from "../../state/actions"
 
-export const App = () => {
+export const TaskBoard = () => {
   const {lists, dispatch} = useAppState()
 
   return (

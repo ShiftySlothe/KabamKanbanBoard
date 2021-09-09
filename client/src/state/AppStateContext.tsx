@@ -7,7 +7,7 @@ import {
   List,
   Task
 } from "./appStateReducer"
-import { DragItem } from "../DragItem"
+import { DragItem } from "../components/Taskboard/DnD/DragItem"
 
 type AppStateContextProps = {
   draggedItem: DragItem | null

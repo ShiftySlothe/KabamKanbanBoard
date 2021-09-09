@@ -1,4 +1,4 @@
-import { DragItem } from "../DragItem"
+import { DragItem } from "../components/Taskboard/DnD/DragItem";
 
 export const isHidden = (
   draggedItem: DragItem | null,
@@ -11,5 +11,5 @@ export const isHidden = (
       draggedItem &&
       draggedItem.type === itemType &&
       draggedItem.id === id
-  )
-}
+  );
+};
