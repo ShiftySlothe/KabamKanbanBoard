@@ -1,10 +1,9 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import "./index.css"
-import { TaskBoard } from "./components/Taskboard/TaskBoard"
-import { DndProvider } from "react-dnd"
-import { HTML5Backend as Backend } from "react-dnd-html5-backend"
-import { AppStateProvider } from "./state/AppStateContext"
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend as Backend } from "react-dnd-html5-backend";
+import { AppStateProvider } from "./state/AppStateContext";
 import { App } from "./components/App";
 
 ReactDOM.render(
@@ -16,4 +15,4 @@ ReactDOM.render(
     </DndProvider>
   </React.StrictMode>,
   document.getElementById("root")
-)
+);

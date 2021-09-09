@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 export const AppContainer = styled.div`
-  height: 100%;
-  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+  list-style-type: none;
+  font-size: 62.5%;
 `;
-
-export const LandingContainer = styled.div``;
-
-export const Banner = styled.div``;
-
-export const BannerHeading = styled.div``;

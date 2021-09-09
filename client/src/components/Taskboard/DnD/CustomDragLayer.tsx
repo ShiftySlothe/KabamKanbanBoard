@@ -1,27 +1,23 @@
-import { useDragLayer } from "react-dnd"
-import { Column } from "../Column"
+import { useDragLayer } from "react-dnd";
+import { Column } from "../Column";
 import {
   CustomDragLayerContainer,
-  DragPreviewWrapper
-} from "../taskBoardStyles"
-import { useAppState } from "../../../state/AppStateContext"
-import { Card } from "../Card"
+  DragPreviewWrapper,
+} from "../taskBoardStyles";
+import { useAppState } from "../../../state/AppStateContext";
+import { Card } from "../Card";
 
 export const CustomDragLayer = () => {
-  const { draggedItem } = useAppState()
+  const { draggedItem } = useAppState();
   const { currentOffset } = useDragLayer((monitor) => ({
-    currentOffset: monitor.getSourceClientOffset()
-  }))
+    currentOffset: monitor.getSourceClientOffset(),
+  }));
 
   return draggedItem && currentOffset ? (
     <CustomDragLayerContainer>
       <DragPreviewWrapper position={currentOffset}>
         {draggedItem.type === "COLUMN" ? (
-          <Column
-            id={draggedItem.id}
-            text={draggedItem.text}
-            isPreview
-          />
+          <Column id={draggedItem.id} text={draggedItem.text} isPreview />
         ) : (
           <Card
             columnId={draggedItem.columnId}
@@ -32,5 +28,5 @@ export const CustomDragLayer = () => {
         )}
       </DragPreviewWrapper>
     </CustomDragLayerContainer>
-  ) : null
-}
+  ) : null;
+};

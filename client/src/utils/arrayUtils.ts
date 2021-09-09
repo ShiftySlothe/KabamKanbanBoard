@@ -1,12 +1,9 @@
 type Item = {
-  id: string
-}
+  id: string;
+};
 
-export function removeItemAtIndex<TItem>(
-  array: TItem[],
-  index: number
-) {
-  return [...array.slice(0, index), ...array.slice(index + 1)]
+export function removeItemAtIndex<TItem>(array: TItem[], index: number) {
+  return [...array.slice(0, index), ...array.slice(index + 1)];
 }
 
 export function insertItemAtIndex<TItem>(
@@ -14,21 +11,17 @@ export function insertItemAtIndex<TItem>(
   item: TItem,
   index: number
 ) {
-  return [...array.slice(0, index), item, ...array.slice(index)]
+  return [...array.slice(0, index), item, ...array.slice(index)];
 }
 
 export const findItemIndexById = <TItem extends Item>(
   items: TItem[],
   id: string
 ) => {
-  return items.findIndex((item: TItem) => item.id === id)
-}
+  return items.findIndex((item: TItem) => item.id === id);
+};
 
-export const moveItem = <TItem>(
-  array: TItem[],
-  from: number,
-  to: number
-) => {
-  const item = array[from]
-  return insertItemAtIndex(removeItemAtIndex(array, from), item, to)
-}
+export const moveItem = <TItem>(array: TItem[], from: number, to: number) => {
+  const item = array[from];
+  return insertItemAtIndex(removeItemAtIndex(array, from), item, to);
+};
