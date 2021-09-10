@@ -1,3 +1,4 @@
 - Consider moving App Context Provider directly down to the Taskboard level.
 - Consider fonts
 - I've fucked with the font size, this could impact the styling of the base app.
+- Change cursor from pointer when button is disabled

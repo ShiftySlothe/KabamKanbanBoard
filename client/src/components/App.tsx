@@ -1,7 +1,7 @@
 import { BrowserRouter, Route } from "react-router-dom";
 import { AppContainer } from "./baseStyles";
 import { Footer } from "./Footer";
-import { Header } from "./Header";
+import { Header } from "./Landing/Header";
 import { Landing } from "./Landing/Landing";
 import { TaskBoard } from "./Taskboard/TaskBoard";
 

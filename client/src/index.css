@@ -28,3 +28,10 @@ html {
 *:after {
   box-sizing: inherit;
 }
+
+a {
+  text-decoration: none;
+  color: #0052cc;
+  background-color: transparent;
+  cursor: pointer;
+}
