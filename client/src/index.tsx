@@ -1,18 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend as Backend } from "react-dnd-html5-backend";
 import { AppStateProvider } from "./state/AppStateContext";
 import { App } from "./components/App";
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
+import theme from "./theme/theme";
 
 ReactDOM.render(
   <React.StrictMode>
-    <DndProvider backend={Backend}>
-      <AppStateProvider>
+    <AppStateProvider>
+      <ChakraProvider>
+        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         <App />
-      </AppStateProvider>
-    </DndProvider>
+      </ChakraProvider>
+    </AppStateProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

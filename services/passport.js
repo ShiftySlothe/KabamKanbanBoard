@@ -26,20 +26,15 @@ passport.use(
       proxy: true,
     },
     // Set up logic for when strategy is triggered
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
       // Check if user exists
-      User.findOne({ googleID: profile.id }).then((existingUser) => {
-        if (existingUser) {
-          done(null, existingUser);
-        } else if (!existingUser) {
-          // Add user to the DB
-          new User({
-            googleID: profile.id,
-          })
-            .save()
-            .then((user) => done(null, user));
-        }
-      });
+      const existingUser = await User.findOne({ googleID: profile.id });
+      if (existingUser) {
+        return done(null, existingUser);
+      }
+      // Add user to the DB
+      const user = await new User({ googleID: profile.id }).save();
+      done(null, user);
     }
   )
 );
