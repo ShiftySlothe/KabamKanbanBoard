@@ -2,3 +2,8 @@
 - Consider fonts
 - I've fucked with the font size, this could impact the styling of the base app.
 - Change cursor from pointer when button is disabled
+- Fix header, logo is spilling over
+- When creating task, click away cancels action
+- Prevent creating a blank card
+- If you create too many cards for the size of screen, the scroll should be on an internal thing
+- And add another list should be 

@@ -1,6 +1,8 @@
+import { Box } from "@chakra-ui/layout";
+import { Button } from "@chakra-ui/react";
 import { useState } from "react";
 import { NewItemForm } from "./NewItemForm";
-import { AddItemButton } from "./taskBoardStyles";
+import AddItemButton from "./AddItemButton";
 
 type AddNewItemProps = {
   onAdd(text: string): void;
@@ -10,7 +12,7 @@ type AddNewItemProps = {
 
 export const AddNewItem = (props: AddNewItemProps) => {
   const [showForm, setShowForm] = useState(false);
-  const { onAdd, toggleButtonText, dark } = props;
+  const { onAdd, toggleButtonText } = props;
 
   if (showForm) {
     return (
@@ -24,8 +26,9 @@ export const AddNewItem = (props: AddNewItemProps) => {
   }
 
   return (
-    <AddItemButton dark={dark} onClick={() => setShowForm(true)}>
-      {toggleButtonText}
-    </AddItemButton>
+    <AddItemButton
+      toggleButtonText={toggleButtonText}
+      onClick={() => setShowForm(true)}
+    />
   );
 };

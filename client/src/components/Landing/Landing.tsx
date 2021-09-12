@@ -15,32 +15,27 @@ const Landing: React.FC = () => {
   } = useDisclosure();
   return (
     <>
-      <Box>
-        <Header />
-        <Flex
-          Flex
-          h="90vh"
-          bg="white"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Container pt={[4, 0]}>
-            <Heading fontSize="6xl">
-              Kanbam helps you move work forward.
-            </Heading>
-            <Text fontSize="xl" p={2}>
-              Manage projects, and tasks. Made using Typescript React, Mongo,
-              Express and Node.
-            </Text>
-            <Flex pt={2}>
-              <Button onClick={openSignUpModal} width="66%">
-                Sign up, it&apos;s free!
-              </Button>
-            </Flex>
-          </Container>
-          <Img src={landingImg} width="50%" display={["none", "none,"]}></Img>
-        </Flex>
-      </Box>
+      <Flex
+        Flex
+        h="90vh"
+        bg="white"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Container pt={[4, 0]}>
+          <Heading fontSize="6xl">Kanbam helps you move work forward.</Heading>
+          <Text fontSize="xl" p={2}>
+            Manage projects, and tasks. Made using Typescript React, Mongo,
+            Express and Node.
+          </Text>
+          <Flex pt={2}>
+            <Button onClick={openSignUpModal} width="66%">
+              Sign up, it&apos;s free!
+            </Button>
+          </Flex>
+        </Container>
+        <Img src={landingImg} width="50%" display={["none", "none,"]}></Img>
+      </Flex>
 
       <AuthModal isOpen={isOpenSignUpModal} onClose={closeSignUpModal} />
     </>
