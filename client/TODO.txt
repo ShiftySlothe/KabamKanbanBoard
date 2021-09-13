@@ -7,3 +7,4 @@
 - Prevent creating a blank card
 - If you create too many cards for the size of screen, the scroll should be on an internal thing
 - And add another list should be 
+- Handle backend API errors on authbuttons and landing page buttons 

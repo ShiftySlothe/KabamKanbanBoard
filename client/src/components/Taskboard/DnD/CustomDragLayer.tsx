@@ -4,11 +4,11 @@ import {
   CustomDragLayerContainer,
   DragPreviewWrapper,
 } from "../taskBoardStyles";
-import { useAppState } from "../../../state/AppStateContext";
+import { useTaskState } from "../../../state/taskState/TaskStateContext";
 import { Card } from "../Card";
 
 export const CustomDragLayer = () => {
-  const { draggedItem } = useAppState();
+  const { draggedItem } = useTaskState();
   const { currentOffset } = useDragLayer((monitor) => ({
     currentOffset: monitor.getSourceClientOffset(),
   }));

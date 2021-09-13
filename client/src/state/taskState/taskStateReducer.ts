@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
-import { findItemIndexById, moveItem } from "../utils/arrayUtils";
-import { DragItem } from "../components/Taskboard/DnD/DragItem";
+import { findItemIndexById, moveItem } from "../../utils/Taskboard/arrayUtils";
+import { DragItem } from "../../components/Taskboard/DnD/DragItem";
 import { Action } from "./actions";
 
 export type Task = {
@@ -14,15 +14,15 @@ export type List = {
   tasks: Task[];
 };
 
-export type AppState = {
+export type TaskState = {
   draggedItem: DragItem | null;
   lists: List[];
 };
 
-export const appStateReducer = (
-  draft: AppState,
+export const taskStateReducer = (
+  draft: TaskState,
   action: Action
-): AppState | void => {
+): TaskState | void => {
   switch (action.type) {
     case "SET_DRAGGED_ITEM": {
       draft.draggedItem = action.payload;

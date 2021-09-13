@@ -1,10 +1,10 @@
 import { useRef } from "react";
 import { CardContainer } from "./taskBoardStyles";
-import { useItemDrag } from "../../utils/useItemDrag";
+import { useItemDrag } from "../../utils/Taskboard/useItemDrag";
 import { useDrop } from "react-dnd";
-import { useAppState } from "../../state/AppStateContext";
-import { isHidden } from "../../utils/isHidden";
-import { moveTask, setDraggedItem } from "../../state/actions";
+import { useTaskState } from "../../state/taskState/TaskStateContext";
+import { isHidden } from "../../utils/Taskboard/isHidden";
+import { moveTask, setDraggedItem } from "../../state/taskState/actions";
 
 type CardProps = {
   text: string;
@@ -14,7 +14,7 @@ type CardProps = {
 };
 
 export const Card = ({ text, id, columnId, isPreview }: CardProps) => {
-  const { draggedItem, dispatch } = useAppState();
+  const { draggedItem, dispatch } = useTaskState();
   const ref = useRef<HTMLDivElement>(null);
   const { drag } = useItemDrag({
     type: "CARD",

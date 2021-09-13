@@ -1,17 +1,17 @@
 import { useRef } from "react";
 import { ColumnContainer, ColumnTitle } from "./taskBoardStyles";
-import { useAppState } from "../../state/AppStateContext";
+import { useTaskState } from "../../state/taskState/TaskStateContext";
 import { Card } from "./Card";
 import { AddNewItem } from "./AddNewItem";
-import { useItemDrag } from "../../utils/useItemDrag";
+import { useItemDrag } from "../../utils/Taskboard/useItemDrag";
 import { useDrop } from "react-dnd";
-import { isHidden } from "../../utils/isHidden";
+import { isHidden } from "../../utils/Taskboard/isHidden";
 import {
   addTask,
   moveTask,
   moveList,
   setDraggedItem,
-} from "../../state/actions";
+} from "../../state/taskState/actions";
 
 type ColumnProps = {
   text: string;
@@ -20,7 +20,7 @@ type ColumnProps = {
 };
 
 export const Column = ({ text, id, isPreview }: ColumnProps) => {
-  const { draggedItem, getTasksByListId, dispatch } = useAppState();
+  const { draggedItem, getTasksByListId, dispatch } = useTaskState();
   const tasks = getTasksByListId(id);
   const ref = useRef<HTMLDivElement>(null);
   const [, drop] = useDrop({

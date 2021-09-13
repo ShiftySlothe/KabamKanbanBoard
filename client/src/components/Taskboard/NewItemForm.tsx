@@ -1,5 +1,5 @@
 import { useState, KeyboardEvent } from "react";
-import { useFocus } from "../../utils/useFocus";
+import { useFocus } from "../../utils/Taskboard/useFocus";
 import AddItemButton from "./AddItemButton";
 import { Input } from "@chakra-ui/react";
 import { Flex } from "@chakra-ui/layout";

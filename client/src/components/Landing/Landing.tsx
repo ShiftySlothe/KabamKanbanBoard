@@ -5,7 +5,8 @@ import { Img } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/hooks";
 import landingImg from "./images/19198999.jpg";
 import AuthModal from "../Auth/AuthModal";
-import Header from "../Header";
+import { useFetchUserQuery } from "../../queries/auth";
+import routeChange from "../../utils/Routing/routeChange";
 
 const Landing: React.FC = () => {
   const {
@@ -13,15 +14,12 @@ const Landing: React.FC = () => {
     onOpen: openSignUpModal,
     onClose: closeSignUpModal,
   } = useDisclosure();
+
+  const { isLoading, error, data, isFetching } = useFetchUserQuery();
+
   return (
     <>
-      <Flex
-        Flex
-        h="90vh"
-        bg="white"
-        alignItems="center"
-        justifyContent="center"
-      >
+      <Flex h="90vh" bg="white" alignItems="center" justifyContent="center">
         <Container pt={[4, 0]}>
           <Heading fontSize="6xl">Kanbam helps you move work forward.</Heading>
           <Text fontSize="xl" p={2}>
@@ -29,8 +27,18 @@ const Landing: React.FC = () => {
             Express and Node.
           </Text>
           <Flex pt={2}>
-            <Button onClick={openSignUpModal} width="66%">
-              Sign up, it&apos;s free!
+            <Button
+              isLoading={isLoading || isFetching}
+              onClick={
+                data
+                  ? () => {
+                      routeChange("/taskboard");
+                    }
+                  : openSignUpModal
+              }
+              width="66%"
+            >
+              {data ? "Open taskboard" : "Sign up, it's free!"}
             </Button>
           </Flex>
         </Container>

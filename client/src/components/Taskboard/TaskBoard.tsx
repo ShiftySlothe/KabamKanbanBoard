@@ -1,13 +1,13 @@
 import { Column } from "./Column";
 import { Flex } from "@chakra-ui/layout";
-import { useAppState } from "../../state/AppStateContext";
+import { useTaskState } from "../../state/taskState/TaskStateContext";
 import { AddNewItem } from "./AddNewItem";
 import { CustomDragLayer } from "./DnD/CustomDragLayer";
-import { addList } from "../../state/actions";
+import { addList } from "../../state/taskState/actions";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend as Backend } from "react-dnd-html5-backend";
 export const TaskBoard = () => {
-  const { lists, dispatch } = useAppState();
+  const { lists, dispatch } = useTaskState();
 
   return (
     <DndProvider backend={Backend}>

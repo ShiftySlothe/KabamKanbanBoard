@@ -1,4 +1,4 @@
-import { DragItem } from "../components/Taskboard/DnD/DragItem";
+import { DragItem } from "../../components/Taskboard/DnD/DragItem";
 
 export type Action =
   | {

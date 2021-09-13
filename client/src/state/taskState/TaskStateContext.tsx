@@ -1,21 +1,21 @@
 import { createContext, useContext, Dispatch, FC } from "react";
 import { useImmerReducer } from "use-immer";
 import { Action } from "./actions";
-import { appStateReducer, AppState, List, Task } from "./appStateReducer";
-import { DragItem } from "../components/Taskboard/DnD/DragItem";
+import { taskStateReducer, TaskState, List, Task } from "./taskStateReducer";
+import { DragItem } from "../../components/Taskboard/DnD/DragItem";
 
-type AppStateContextProps = {
+type TaskStateContextProps = {
   draggedItem: DragItem | null;
   lists: List[];
   getTasksByListId(id: string): Task[];
   dispatch: Dispatch<Action>;
 };
 
-const AppStateContext = createContext<AppStateContextProps>(
-  {} as AppStateContextProps
+const TaskStateContext = createContext<TaskStateContextProps>(
+  {} as TaskStateContextProps
 );
 
-const appData: AppState = {
+const taskData: TaskState = {
   draggedItem: null,
   lists: [
     {
@@ -36,8 +36,8 @@ const appData: AppState = {
   ],
 };
 
-export const AppStateProvider: FC = ({ children }) => {
-  const [state, dispatch] = useImmerReducer(appStateReducer, appData);
+export const TaskStateProvider: FC = ({ children }) => {
+  const [state, dispatch] = useImmerReducer(taskStateReducer, taskData);
 
   const { draggedItem, lists } = state;
   const getTasksByListId = (id: string) => {
@@ -45,14 +45,14 @@ export const AppStateProvider: FC = ({ children }) => {
   };
 
   return (
-    <AppStateContext.Provider
+    <TaskStateContext.Provider
       value={{ draggedItem, lists, getTasksByListId, dispatch }}
     >
       {children}
-    </AppStateContext.Provider>
+    </TaskStateContext.Provider>
   );
 };
 
-export const useAppState = () => {
-  return useContext(AppStateContext);
+export const useTaskState = () => {
+  return useContext(TaskStateContext);
 };

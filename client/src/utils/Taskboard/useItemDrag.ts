@@ -1,12 +1,12 @@
 import { useDrag } from "react-dnd";
-import { useAppState } from "../state/AppStateContext";
-import { DragItem } from "../components/Taskboard/DnD/DragItem";
+import { useTaskState } from "../../state/taskState/TaskStateContext";
+import { DragItem } from "../../components/Taskboard/DnD/DragItem";
 import { useEffect } from "react";
 import { getEmptyImage } from "react-dnd-html5-backend";
-import { setDraggedItem } from "../state/actions";
+import { setDraggedItem } from "../../state/taskState/actions";
 
 export const useItemDrag = (item: DragItem) => {
-  const { dispatch } = useAppState();
+  const { dispatch } = useTaskState();
   const [, drag, preview] = useDrag({
     type: item.type,
     item: () => {
