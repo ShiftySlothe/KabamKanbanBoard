@@ -9,6 +9,9 @@ export const AppContainer = styled.div`
   height: 100%;
   padding: 20px;
   width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
 `;
 
 export const DragPreviewContainer = styled.div<types.DragPreviewContainerProps>`
@@ -18,6 +21,7 @@ export const DragPreviewContainer = styled.div<types.DragPreviewContainerProps>`
 
 export const ColumnContainer = styled(DragPreviewContainer)`
   background-color: #ebecf0;
+  min-width: 300px;
   width: 300px;
   min-height: 40px;
   margin-right: 20px;

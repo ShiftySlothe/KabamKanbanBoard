@@ -1,5 +1,9 @@
 import { nanoid } from "nanoid";
-import { findItemIndexById, moveItem } from "../../utils/Taskboard/arrayUtils";
+import {
+  findItemIndexById,
+  moveItem,
+  removeItemAtIndex,
+} from "../../utils/Taskboard/arrayUtils";
 import { DragItem } from "../../components/Taskboard/DnD/DragItem";
 import { Action } from "./actions";
 
@@ -75,6 +79,32 @@ export const taskStateReducer = (
 
       // Add the task to the target list
       draft.lists[targetListIndex].tasks.splice(hoverIndex, 0, item);
+      break;
+    }
+    case "DELETE_TASK": {
+      //Destructure payload
+      const { taskId, listId } = action.payload;
+      //Find list index
+      const targetListIndex = findItemIndexById(draft.lists, listId);
+      //Find task index
+      const targetTaskIndex = findItemIndexById(
+        draft.lists[targetListIndex].tasks,
+        taskId
+      );
+      //Remove task from relevant task[]
+      draft.lists[targetListIndex].tasks = removeItemAtIndex(
+        draft.lists[targetListIndex].tasks,
+        targetTaskIndex
+      );
+      break;
+    }
+    case "DELETE_LIST": {
+      //Destructure payload
+      const { listId } = action.payload;
+      //Find list index
+      const targetListIndex = findItemIndexById(draft.lists, listId);
+      //Remove list from list[]
+      draft.lists = removeItemAtIndex(draft.lists, targetListIndex);
       break;
     }
     default: {

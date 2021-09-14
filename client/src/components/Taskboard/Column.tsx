@@ -1,18 +1,19 @@
-import { useRef } from "react";
 import { ColumnContainer, ColumnTitle } from "./styles/taskBoardStyles";
+import { AddNewItem } from "./AddNewItem";
 import { useTaskState } from "../../state/taskState/TaskStateContext";
 import { Card } from "./Card/Card";
-import { AddNewItem } from "./AddNewItem";
+import {
+  addTask,
+  moveList,
+  moveTask,
+  setDraggedItem,
+  deleteList,
+} from "../../state/taskState/actions";
+import { useRef } from "react";
 import { useItemDrag } from "../../utils/Taskboard/useItemDrag";
 import { useDrop } from "react-dnd";
 import { isHidden } from "../../utils/Taskboard/isHidden";
-import {
-  addTask,
-  moveTask,
-  moveList,
-  setDraggedItem,
-} from "../../state/taskState/actions";
-
+import { Button } from "@chakra-ui/react";
 type ColumnProps = {
   text: string;
   id: string;
@@ -23,6 +24,8 @@ export const Column = ({ text, id, isPreview }: ColumnProps) => {
   const { draggedItem, getTasksByListId, dispatch } = useTaskState();
   const tasks = getTasksByListId(id);
   const ref = useRef<HTMLDivElement>(null);
+
+  //Handle drag/drop
   const [, drop] = useDrop({
     accept: ["COLUMN", "CARD"],
     hover() {
@@ -48,10 +51,14 @@ export const Column = ({ text, id, isPreview }: ColumnProps) => {
       }
     },
   });
-
   const { drag } = useItemDrag({ type: "COLUMN", id, text });
 
   drag(drop(ref));
+
+  const deleteColumn = () => {
+    console.log("Deleting list");
+    dispatch(deleteList(id));
+  };
 
   return (
     <ColumnContainer
@@ -59,12 +66,15 @@ export const Column = ({ text, id, isPreview }: ColumnProps) => {
       ref={ref}
       isHidden={isHidden(draggedItem, "COLUMN", id, isPreview)}
     >
-      <ColumnTitle>{text}</ColumnTitle>
+      <ColumnTitle>
+        {text}
+        <Button onClick={deleteColumn}>Delete</Button>
+      </ColumnTitle>
       {tasks.map((task) => (
-        <Card id={task.id} columnId={id} text={task.text} key={task.id} />
+        <Card key={task.id} text={task.text} id={task.id} columnId={id} />
       ))}
       <AddNewItem
-        toggleButtonText="+ Add another card"
+        toggleButtonText="+ Add another task"
         onAdd={(text) => dispatch(addTask(text, id))}
         dark
       />
