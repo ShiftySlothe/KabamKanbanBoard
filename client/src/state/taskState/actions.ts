@@ -2,10 +2,6 @@ import { DragItem } from "../../components/Taskboard/DnD/DragItem";
 
 export type Action =
   | {
-      type: "SET_DRAGGED_ITEM";
-      payload: DragItem | null;
-    }
-  | {
       type: "ADD_LIST";
       payload: string;
     }
@@ -15,10 +11,11 @@ export type Action =
     }
   | {
       type: "MOVE_LIST";
-      payload: {
-        draggedId: string;
-        hoverId: string;
-      };
+      payload: { draggedId: string; hoverId: string };
+    }
+  | {
+      type: "SET_DRAGGED_ITEM";
+      payload: DragItem | null;
     }
   | {
       type: "MOVE_TASK";
@@ -28,30 +25,20 @@ export type Action =
         sourceColumnId: string;
         targetColumnId: string;
       };
+    }
+  | {
+      type: "DELETE_TASK";
+      payload: {
+        taskId: string;
+        listId: string;
+      };
+    }
+  | {
+      type: "DELETE_LIST";
+      payload: {
+        listId: string;
+      };
     };
-
-export const moveTask = (
-  draggedItemId: string,
-  hoveredItemId: string | null,
-  sourceColumnId: string,
-  targetColumnId: string
-): Action => ({
-  type: "MOVE_TASK",
-  payload: {
-    draggedItemId,
-    hoveredItemId,
-    sourceColumnId,
-    targetColumnId,
-  },
-});
-
-export const moveList = (draggedId: string, hoverId: string): Action => ({
-  type: "MOVE_LIST",
-  payload: {
-    draggedId,
-    hoverId,
-  },
-});
 
 export const addTask = (text: string, listId: string): Action => ({
   type: "ADD_TASK",
@@ -66,7 +53,45 @@ export const addList = (text: string): Action => ({
   payload: text,
 });
 
+export const moveList = (draggedId: string, hoverId: string): Action => ({
+  type: "MOVE_LIST",
+  payload: {
+    draggedId,
+    hoverId,
+  },
+});
+
 export const setDraggedItem = (draggedItem: DragItem | null): Action => ({
   type: "SET_DRAGGED_ITEM",
   payload: draggedItem,
+});
+
+export const moveTask = (
+  draggedItemId: string,
+  hoveredItemId: string | null,
+  sourceColumnId: string,
+  targetColumId: string
+): Action => ({
+  type: "MOVE_TASK",
+  payload: {
+    draggedItemId,
+    hoveredItemId,
+    sourceColumnId,
+    targetColumnId: targetColumId,
+  },
+});
+
+export const deleteTask = (taskId: string, listId: string): Action => ({
+  type: "DELETE_TASK",
+  payload: {
+    taskId,
+    listId,
+  },
+});
+
+export const deleteList = (listId: string): Action => ({
+  type: "DELETE_LIST",
+  payload: {
+    listId,
+  },
 });

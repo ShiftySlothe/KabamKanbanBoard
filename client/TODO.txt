@@ -8,3 +8,4 @@
 - If you create too many cards for the size of screen, the scroll should be on an internal thing
 - And add another list should be 
 - Handle backend API errors on authbuttons and landing page buttons 
+- Handle the above with an error screen "Looks like we're having some problems right now, please check back later..>"

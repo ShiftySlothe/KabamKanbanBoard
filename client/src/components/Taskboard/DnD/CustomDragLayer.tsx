@@ -3,9 +3,9 @@ import { Column } from "../Column";
 import {
   CustomDragLayerContainer,
   DragPreviewWrapper,
-} from "../taskBoardStyles";
+} from "../styles/taskBoardStyles";
 import { useTaskState } from "../../../state/taskState/TaskStateContext";
-import { Card } from "../Card";
+import { Card } from "../Card/Card";
 
 export const CustomDragLayer = () => {
   const { draggedItem } = useTaskState();

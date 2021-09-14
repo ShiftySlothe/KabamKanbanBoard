@@ -1,7 +1,7 @@
 import { useRef } from "react";
-import { ColumnContainer, ColumnTitle } from "./taskBoardStyles";
+import { ColumnContainer, ColumnTitle } from "./styles/taskBoardStyles";
 import { useTaskState } from "../../state/taskState/TaskStateContext";
-import { Card } from "./Card";
+import { Card } from "./Card/Card";
 import { AddNewItem } from "./AddNewItem";
 import { useItemDrag } from "../../utils/Taskboard/useItemDrag";
 import { useDrop } from "react-dnd";

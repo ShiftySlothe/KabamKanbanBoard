@@ -1,10 +1,15 @@
 import { useRef } from "react";
-import { CardContainer } from "./taskBoardStyles";
-import { useItemDrag } from "../../utils/Taskboard/useItemDrag";
+import { CardContainer } from "../styles/taskBoardStyles";
+import { Button } from "@chakra-ui/react";
+import { useItemDrag } from "../../../utils/Taskboard/useItemDrag";
 import { useDrop } from "react-dnd";
-import { useTaskState } from "../../state/taskState/TaskStateContext";
-import { isHidden } from "../../utils/Taskboard/isHidden";
-import { moveTask, setDraggedItem } from "../../state/taskState/actions";
+import { useTaskState } from "../../../state/taskState/TaskStateContext";
+import { isHidden } from "../../../utils/Taskboard/isHidden";
+import {
+  moveTask,
+  setDraggedItem,
+  deleteTask,
+} from "../../../state/taskState/actions";
 
 type CardProps = {
   text: string;
@@ -16,12 +21,15 @@ type CardProps = {
 export const Card = ({ text, id, columnId, isPreview }: CardProps) => {
   const { draggedItem, dispatch } = useTaskState();
   const ref = useRef<HTMLDivElement>(null);
+
+  //Handle drag/drop
   const { drag } = useItemDrag({
     type: "CARD",
     id,
     text,
     columnId,
   });
+
   const [, drop] = useDrop({
     accept: "CARD",
     hover() {
@@ -42,13 +50,18 @@ export const Card = ({ text, id, columnId, isPreview }: CardProps) => {
 
   drag(drop(ref));
 
+  const removeTask = () => {
+    dispatch(deleteTask(id, columnId));
+  };
+
   return (
     <CardContainer
       isHidden={isHidden(draggedItem, "CARD", id, isPreview)}
       isPreview={isPreview}
       ref={ref}
     >
-      {text}
+      <p>{text}</p>
+      <Button onClick={removeTask}>Delete</Button>
     </CardContainer>
   );
 };
