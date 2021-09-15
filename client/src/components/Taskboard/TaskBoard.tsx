@@ -4,13 +4,15 @@ import { useTaskState } from "../../state/taskState/TaskStateContext";
 import { AddNewItem } from "./AddNewItem";
 import { CustomDragLayer } from "./DnD/CustomDragLayer";
 import { addList } from "../../state/taskState/actions";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend as Backend } from "react-dnd-html5-backend";
+import { DndProvider } from "react-dnd-multi-backend";
+import HTML5toTouch from 'react-dnd-multi-backend/dist/esm/HTML5toTouch';
+
 export const TaskBoard = () => {
+
   const { lists, dispatch } = useTaskState();
 
   return (
-    <DndProvider backend={Backend}>
+    <DndProvider options={HTML5toTouch}>
       <Flex
         height="90vh"
         p="20px"

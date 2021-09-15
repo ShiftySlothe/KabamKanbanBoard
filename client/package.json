@@ -24,6 +24,8 @@
     "react": "^17.0.1",
     "react-dnd": "^14.0.1",
     "react-dnd-html5-backend": "^14.0.0",
+    "react-dnd-multi-backend": "^6.0.2",
+    "react-dnd-touch-backend": "^14.1.0",
     "react-dom": "^17.0.1",
     "react-query": "^3.23.2",
     "react-scripts": "4.0.3",
@@ -53,6 +55,6 @@
     ]
   },
   "devDependencies": {
-   
+    "@types/react-dnd-multi-backend": "^6.0.1"
   }
 }
